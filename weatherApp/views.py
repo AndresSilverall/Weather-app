@@ -10,9 +10,26 @@ def index(request):
 
 
 def api_pokemon(request):
-    url = "https://pokeapi.co/api/v2/pokemon-species/aegislash"
-    response = requests.get(url)
-    content = response.text
-    x = json.loads(content)
-    context = {"x":x}
-    return render(request, "index.html",context )
+    API_KEY = "8d93ed2b737a6f91c8dfa80d73fa2c3f"
+    city = f"Barranquilla,CO"
+    url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}'
+    city_weather = requests.get(url.format(city))
+    city_weather.json()
+    clima = json.loads(city_weather.text)
+    
+    data = {
+        "city": clima["name"],
+        "country": clima["sys"]["country"],
+        "desc": clima["weather"][0]["description"],
+        "temp": clima["main"]["temp"],
+        "icon": clima["weather"][0]["icon"]
+    }
+
+    print("Ciudad: ", data["city"])
+    print("pais: ",data["country"] )
+    print("descripcion: ", data["desc"] )
+    print("temperatura: ",data["temp"] )
+    print("imagen: ", data["icon"] )
+    print()
+
+    return render(request, "index.html" )
