@@ -11,13 +11,13 @@ def index(request):
 
 def api_pokemon(request):
     API_KEY = "8d93ed2b737a6f91c8dfa80d73fa2c3f"
-    city = f"Barranquilla,CO"
+    city = f"Bogota,CO"
     url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}'
     city_weather = requests.get(url.format(city))
     city_weather.json()
     clima = json.loads(city_weather.text)
     
-    data = {
+    info = {
         "city": clima["name"],
         "country": clima["sys"]["country"],
         "desc": clima["weather"][0]["description"],
@@ -25,11 +25,12 @@ def api_pokemon(request):
         "icon": clima["weather"][0]["icon"]
     }
 
-    print("Ciudad: ", data["city"])
-    print("pais: ",data["country"] )
-    print("descripcion: ", data["desc"] )
-    print("temperatura: ",data["temp"] )
-    print("imagen: ", data["icon"] )
+
+    print("Ciudad: ", info["city"])
+    print("pais: ",info["country"] )
+    print("descripcion: ", info["desc"] )
+    print("temperatura: ",info["temp"] )
+    #print("imagen: ", info["icon"] )
     print()
 
-    return render(request, "index.html" )
+    return render(request, "index.html", {"data": info})

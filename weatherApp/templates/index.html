@@ -12,25 +12,26 @@
 <body>
 		<div class="container">
 		 <div class="row justify-content-center">
-			<div class="col-sm-100">
+			<div class="col-sm-120">
 				<div class="card">
 					<div class="card-body">
-						<img class="card-img-top" src="https://i.pinimg.com/originals/06/c4/f7/06c4f70ec5931e2342e703e8a3f0a253.png" alt="logo" width="400" height="400">
-						<h5 class="card-title">Special title treatment</h5>
-						<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+						<img class="card-img-top" src="https://i.pinimg.com/originals/06/c4/f7/06c4f70ec5931e2342e703e8a3f0a253.png" alt="logo" width="400" height="300">
+						<h5 class="card-title">Weather today</h5>
+						{% for key, value in data.items %}
+							<h3 class="card-text">{{ key }}: {{ value }} </h3>
+						{% endfor %}
+						<figure class="image is-50x50">
+							<img src="http://openweathermap.org/img/w/{{ data.icon }}.png " alt="Image" width="80" height="80">
+						</figure>
 						<a href="#" class="btn btn-primary">Go somewhere</a>
 					</div>
 				</div>
+				
 			</div>
 		</div>
 		<br>
 		<br>
 		<br>
-<<<<<<< HEAD
-	<h3> contenido: {{x}}</h3>
 	<script src="{% static 'bootstrap/js/bootstrap.bundle.js'%}"></script>
-=======
-		<script src="{% static 'bootstrap/js/bootstrap.bundle.js'%}"></script>
->>>>>>> 651e873255f09f067bdad4abffd35649b6e4f13d
 </body>
 </html>
