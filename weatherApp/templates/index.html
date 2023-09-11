@@ -19,7 +19,7 @@
 				<div class="card border-primary">
 					<div class="card-body">
 						<img class="card-image-top" src="{% static 'images/logo.png' %}" alt="logo.png" width="500" height="400">
-						<form action="{% url  'weather' %}" method="POST">
+						<form action={% url  'weather' %}" method="POST">
 								{% csrf_token %}
 								<div class="form-group">
 										<br>

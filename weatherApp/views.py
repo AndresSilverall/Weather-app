@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
-from django.http import JsonResponse
+from django.shortcuts import render
+from django.conf import settings
 import requests
 import datetime
 import json
@@ -8,7 +8,10 @@ import json
 # Create your views here.
 def weather_app(request):
 
-    API_KEY = "8d93ed2b737a6f91c8dfa80d73fa2c3f"
+    #API_KEY = settings.KEY
+    #print(API_KEY)
+    API_KEY = f'66e0ca6918000599b7f60957e1b55812'
+
     date = datetime.datetime.now()
 
     get_city = request.POST.get("search")
@@ -16,6 +19,7 @@ def weather_app(request):
     city_weather = requests.get(url.format(get_city))
     city_weather.json()
     clima = json.loads(city_weather.text)
+    print(clima)
     
     info = {
 

@@ -2,6 +2,9 @@ from pathlib import Path
 import os
 
 
+#Variables de entorno
+KEY = os.environ.get("API_KEY")
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
