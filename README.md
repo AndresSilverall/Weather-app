@@ -16,14 +16,17 @@ Aplicación web que muestra en tiempo real el clima de las diferentes ciudades d
 ## Instalación
 1. Clona este repositorio: `https://github.com/AndresSilverall/Weather-app.git`
 2. Navega a la carpeta del proyecto: `cd Weather-app`
-3. Ejecuta un entorno virtual en Python: 
+3. Ejecuta un entorno virtual de Python: 
 
  ● `python -m venv venv`
+
  ● `cd venv`
+
  ● `cd Scripts`
+
  ● `activate`
 
-4. Desde la carpeta raiz instalar todas las dependencias de la aplicacion con `pip install - r requirements.txt`
+4. Una vez ya activado el entorno virtual, desde la carpeta raiz del proyecto instalar todas las dependencias de la aplicación con `pip install - r requirements.txt`
 5. Ejecuta el servidor de desarrollo: `python manage.py runserver`
 6. Abre tu navegador y ve a: `http://127.0.0.1:8000/`
    
