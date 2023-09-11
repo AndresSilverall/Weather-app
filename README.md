@@ -1,6 +1,6 @@
-# Sistema de gestion de materias 
+# Weather App
 
-Aplicación web que muestra en tiempo real el clima de las diferentes ciudades del mundo por medio del consumo de una API.
+Aplicación web que muestra en tiempo real el clima de las diferentes ciudades del mundo por medio del consumo de una API, la aplicación cuenta con un formulario donde el usuario ingresa la ciudad y mostrará informacion relevante del clima. 
 
 ## Tecnologías usadas
 
