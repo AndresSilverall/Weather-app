@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+from .forms import SearchCity
 import requests
 import datetime
 import json
@@ -12,6 +13,7 @@ def index(request):
 
 def api_pokemon(request):
 
+    form = SearchCity()
     date = datetime.datetime.now()
     
     API_KEY = "8d93ed2b737a6f91c8dfa80d73fa2c3f"
@@ -39,4 +41,11 @@ def api_pokemon(request):
     print("image: ", info["icon"] )
     print()
 
-    return render(request, "index.html", {"data": info, "date": date})
+    context = {
+
+        "data": info,
+        "date": date,
+        "form": form
+
+        }
+    return render(request, "index.html", context)
