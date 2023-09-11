@@ -10,20 +10,29 @@
 	<title>Weather App</title>
 </head>
 <body>
+	<div class="text-center">
+		<h1> Weather App API</h1>
+	</div>
 		<div class="container">
 		 <div class="row justify-content-center">
-			<div class="col-sm-120">
+			<div class="col-sm-100">
 				<div class="card">
 					<div class="card-body">
-						<img class="card-img-top" src="https://i.pinimg.com/originals/06/c4/f7/06c4f70ec5931e2342e703e8a3f0a253.png" alt="logo" width="400" height="300">
-						<h5 class="card-title">Weather today</h5>
+						<img class="card-image-top" src="{% static 'images/logo.png' %}" alt="logo.png" width="400" height="400">
+						<form action="/" method="POST">
+						<div class="<div class="form-group">
+								<label for=""></label>
+						  	<input type="text" name="" id="" class="form-control" placeholder="Seach city" aria-describedby="helpId">
+						  	<br>
+						  	<button class="btn btn-success"> Search City</button>
+						</div>
+						</form>
 						{% for key, value in data.items %}
 							<h3 class="card-text">{{ key }}: {{ value }} </h3>
 						{% endfor %}
 						<figure class="image is-50x50">
-							<img src="http://openweathermap.org/img/w/{{ data.icon }}.png " alt="Image" width="80" height="80">
+							<img src="http://openweathermap.org/img/w/{{ data.icon }}.png " alt="Imagen.png" width="80" height="80">
 						</figure>
-						<a href="#" class="btn btn-primary">Go somewhere</a>
 					</div>
 				</div>
 				

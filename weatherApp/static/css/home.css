@@ -18,3 +18,7 @@ body {
     align-items: center;
     margin-right: 60px;
 }
+
+.text-center {
+    padding-top: 10px;
+}

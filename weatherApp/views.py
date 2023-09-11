@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 import requests
+import datetime
 import json
 
 
@@ -10,27 +11,32 @@ def index(request):
 
 
 def api_pokemon(request):
+
+    date = datetime.datetime.now()
+    
     API_KEY = "8d93ed2b737a6f91c8dfa80d73fa2c3f"
-    city = f"Bogota,CO"
+    city = f"Medellín, CO"
     url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}'
     city_weather = requests.get(url.format(city))
     city_weather.json()
     clima = json.loads(city_weather.text)
     
     info = {
-        "city": clima["name"],
-        "country": clima["sys"]["country"],
-        "desc": clima["weather"][0]["description"],
-        "temp": clima["main"]["temp"],
+
+        "City": clima["name"],
+        "Country": clima["sys"]["country"],
+        "Description": clima["weather"][0]["description"],
+        "Temperature": round(clima["main"]["temp"], ndigits=None),
         "icon": clima["weather"][0]["icon"]
     }
 
 
-    print("Ciudad: ", info["city"])
-    print("pais: ",info["country"] )
-    print("descripcion: ", info["desc"] )
-    print("temperatura: ",info["temp"] )
-    #print("imagen: ", info["icon"] )
+    #testeando que funcione correctamente el llamado a la Weather API
+    print("Ciudad: ", info["City"])
+    print("pais: ",info["Country"] )
+    print("descripcion: ", info["Description"] )
+    print("temperatura: ",info["Temperature"] )
+    print("image: ", info["icon"] )
     print()
 
-    return render(request, "index.html", {"data": info})
+    return render(request, "index.html", {"data": info, "date": date})
