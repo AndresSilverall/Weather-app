@@ -19,6 +19,7 @@ def weather_app(request):
     city_weather = requests.get(url.format(get_city))
     city_weather.json()
     weather = json.loads(city_weather.text)
+    print(weather)
 
 
     main_info_weather = {
