@@ -10,7 +10,7 @@ def weather_app(request):
 
     #API_KEY = settings.KEY
     #print(API_KEY)
-    API_KEY = f'66e0ca6918000599b7f60957e1b55812'
+    API_KEY = f'8d93ed2b737a6f91c8dfa80d73fa2c3f'
 
     date = datetime.datetime.now()
 
@@ -19,7 +19,6 @@ def weather_app(request):
     city_weather = requests.get(url.format(get_city))
     city_weather.json()
     clima = json.loads(city_weather.text)
-    print(clima)
     
     info = {
 
