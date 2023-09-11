@@ -18,30 +18,32 @@ def weather_app(request):
     url = f'http://api.openweathermap.org/data/2.5/weather?q={get_city}&appid={API_KEY}'
     city_weather = requests.get(url.format(get_city))
     city_weather.json()
-    clima = json.loads(city_weather.text)
-    
-    info = {
+    weather = json.loads(city_weather.text)
 
-        "City": clima["name"],
-        "Country": clima["sys"]["country"],
-        "Description": clima["weather"][0]["description"],
-        "Temperature": round(clima["main"]["temp"], ndigits=None),
-        "icon": clima["weather"][0]["icon"]
+
+    main_info_weather = {
+
+        "City": weather["name"],
+        "Country": weather["sys"]["country"],
+        "Description": weather["weather"][0]["description"],
+        "Temperature": str(weather["main"]["temp"])[0:2],
+        "icon": weather["weather"][0]["icon"],
+        "feels": str(weather["main"]['feels_like'])[0:2]
 
     }
 
 
     #testeando que funcione correctamente el llamado a la Weather API
-    print("Ciudad: ", info["City"])
-    print("pais: ",info["Country"] )
-    print("descripcion: ", info["Description"] )
-    print("temperatura: ",info["Temperature"] )
-    print("image: ", info["icon"] )
+    print("Ciudad: ", main_info_weather["City"])
+    print("pais: ",main_info_weather["Country"] )
+    print("descripcion: ", main_info_weather["Description"] )
+    print("temperatura: ",main_info_weather["Temperature"] )
+    print("image: ", main_info_weather["icon"] )
     print()
 
     context = {
 
-        "data": info,
+        "data": main_info_weather,
         "date": date,
 
     }
