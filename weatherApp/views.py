@@ -1,25 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
-from .forms import SearchCity
 import requests
 import datetime
 import json
 
 
 # Create your views here.
-def index(request):
-    return render(request, "index.html")
+def weather_app(request):
 
-
-def api_pokemon(request):
-
-    form = SearchCity()
-    date = datetime.datetime.now()
-    
     API_KEY = "8d93ed2b737a6f91c8dfa80d73fa2c3f"
-    city = f"Medellín, CO"
-    url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}'
-    city_weather = requests.get(url.format(city))
+    date = datetime.datetime.now()
+
+    get_city = request.POST.get("search")
+    url = f'http://api.openweathermap.org/data/2.5/weather?q={get_city}&appid={API_KEY}'
+    city_weather = requests.get(url.format(get_city))
     city_weather.json()
     clima = json.loads(city_weather.text)
     
@@ -30,6 +24,7 @@ def api_pokemon(request):
         "Description": clima["weather"][0]["description"],
         "Temperature": round(clima["main"]["temp"], ndigits=None),
         "icon": clima["weather"][0]["icon"]
+
     }
 
 
@@ -45,7 +40,8 @@ def api_pokemon(request):
 
         "data": info,
         "date": date,
-        "form": form
 
-        }
+    }
+    
     return render(request, "index.html", context)
+

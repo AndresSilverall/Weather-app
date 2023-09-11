@@ -19,13 +19,14 @@
 				<div class="card">
 					<div class="card-body">
 						<img class="card-image-top" src="{% static 'images/logo.png' %}" alt="logo.png" width="400" height="400">
-						<form action="/" method="POST">
-						<div class="form-group">
-								<br>
-								<input class="form-control" type="text" placeholder="Search city">
-						  	<br>
-						  	<button class="btn btn-success"> Search City</button>
-						</div>
+						<form action="{% url  'weather' %}" method="POST">
+								{% csrf_token %}
+								<div class="form-group">
+										<br>
+										<input class="form-control" type="text" placeholder="Search city" name="search">
+						  			<br>
+						  			<button class="btn btn-success"> Search City</button>
+								</div>
 						</form>
 						{% for key, value in data.items %}
 							<h3 class="card-text">{{ key }}: {{ value }} </h3>
