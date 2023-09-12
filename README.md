@@ -29,4 +29,8 @@ Aplicación web que muestra en tiempo real el clima de las diferentes ciudades d
 4. Una vez ya activado el entorno virtual, desde la carpeta raiz del proyecto instalar todas las dependencias de la aplicación con `pip install -r requirements.txt`
 5. Ejecuta el servidor de desarrollo: `python manage.py runserver`
 6. Abre tu navegador y ve a: `http://127.0.0.1:8000/`
+
+
+## App en ejecución
+![weatherapp](assets/weatherapp.gif)
    
