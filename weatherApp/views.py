@@ -6,16 +6,10 @@ import datetime
 import json
 
 
-# Create your views here.
-import requests
-import datetime
-import json
-from django.shortcuts import render
-
 def weather_app(request):
     API_KEY = '8d93ed2b737a6f91c8dfa80d73fa2c3f'
     date = datetime.datetime.now()
-    main_info_weather = {}  # Initialize the dictionary
+    main_info_weather = {} 
 
     if request.method == "POST":
         get_city = request.POST.get("search")
