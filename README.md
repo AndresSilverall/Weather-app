@@ -33,4 +33,4 @@ Aplicación web que muestra en tiempo real el clima de las diferentes ciudades d
 
 ## App en ejecución
 
-<img src="assets/weatherapp.gif" alt="App en ejecucion" autoplay> 
+<img src="assets/app.gif" alt="App en ejecucion" autoplay> 
