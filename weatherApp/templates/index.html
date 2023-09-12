@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
 {% load dictionary_values %}
+{% load capitalize_first %}
 {% load get_date %}
 <html lang="en">
 <head>
@@ -9,7 +10,10 @@
 	<link rel="stylesheet" href="{% static 'css/home.css' %}">
 	<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
 	<link rel="stylesheet" href="{% static 'bootstrap/js/bootstrap.min.js' %}">
-	<link rel="shortcut icon" href="{% static 'images/favicon.png' %}"" type="image/x-icon">
+	<link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+	<link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
 	<title>Weather App</title>
 </head>
 <body>
@@ -17,9 +21,9 @@
 		<div class="container">
 		 <div class="row justify-content-center">
 			<div class="col-sm-100">
-				<div class="card border-primary">
+				<div class="card">
 					<div class="card-body">
-						<img class="card-image-top" src="{% static 'images/logo.png' %}" alt="logo.png" width="500" height="400">
+						<img src="{% static 'images/card.png' %}" alt="card.png" width="500" height="400">
 						<form action="{% url  'weather' %}" method="POST">
 								{% csrf_token %}
 								<div class="form-group">
@@ -30,10 +34,28 @@
 								</div>
 						</form>
 						<br>
-							<h3 class="card-text">{% get_date %}</h3>
-							<h3 class="card-text">{{ data|get_value:"City" }}, {{ data|get_value:"Country" }}</h3>
+							<h3 class="card-text"><i class="fa-solid fa-location-dot fa-lg"></i> {{ data|get_value:"City" }}, {{ data|get_value:"Country" }}</h3>
 							<h3 class="card-text">{{ data|get_value:"Temperature" }}°C<img class="card-image-left" src="http://openweathermap.org/img/w/{{ data.icon }}.png " alt="Imagen.png" width="80" height="80"></h3>
-							<h3 class="card-text">{{ data|get_value:"Description" }}, Feels like {{ data|get_value:"feels" }}°C </h3>
+						<h3 class="card-text">{{ data|get_value:"Description"|capfirst }}, Feels like {{ data|get_value:"feels" }}°C <i class="fa-solid fa-temperature-three-quarters fa-lg"></i></h3>
+						<br>
+						<div class="row">
+							<div class="col-sm-6">
+							  <div class="card">
+								<div class="card-body">
+								  <h5 class="card-title">Humidity <i class="fa-solid fa-hot-tub-person fa-lg"></i></h5>
+								  <h3 class="card-text">{{ data|get_value:"humidity" }}%</h3>
+								</div>
+							  </div>
+							</div>
+							<div class="col-sm-6">
+							  <div class="card">
+								<div class="card-body">
+								  <h5 class="card-title">Wind <i class="fa-solid fa-wind fa-lg"></i></h5>
+								  <h3 class="card-text">{{ data|get_value:"speed" }}KM</h3>
+								</div>
+							  </div>
+							</div>
+						  </div>
 					</div>
 				</div>
 			</div>

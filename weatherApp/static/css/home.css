@@ -5,9 +5,9 @@
 
 
 body {
-    background: #03001e;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #fdeff9, #ec38bc, #7303c0, #03001e);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #fdeff9, #ec38bc, #7303c0, #03001e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #03001e; 
+    background: -webkit-linear-gradient(to right, #fdeff9, #ec38bc, #7303c0, #03001e); 
+    background: linear-gradient(to right, #fdeff9, #ec38bc, #7303c0, #03001e); 
 }
 
 
@@ -21,11 +21,18 @@ body {
 }
 
 
-.text-center {
-    padding-top: 10px;
+h1 {
+    padding-top: 15px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 200;
 }
 
 
-.container  {
-    background-color: aqua;
+.card-body {
+    text-align: center;
+}
+
+
+.card-text-1 {
+    font-size: x-large;
 }

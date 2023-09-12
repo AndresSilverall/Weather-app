@@ -29,7 +29,9 @@ def weather_app(request):
         "Description": weather["weather"][0]["description"],
         "Temperature": str(weather["main"]["temp"])[0:2],
         "icon": weather["weather"][0]["icon"],
-        "feels": str(weather["main"]['feels_like'])[0:2]
+        "feels": str(weather["main"]['feels_like'])[0:2],
+        "humidity": weather["main"]['humidity'],
+        "speed": weather["wind"]['speed']
 
     }
 
